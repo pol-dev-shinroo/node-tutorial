@@ -1,6 +1,9 @@
 # node-tutorial
 
 - [Browser vs Node](#browser-vs-node)
+- [REPL](#using-repl-in-nodejs)
+- [Global Variables](#globals-global-variables)
+- [Modules](#modules)
 
 ## Browser vs Node
 
@@ -18,7 +21,7 @@
 - simply type "node" in your terminal
 - To run your node app, simply type "node [filename].js"
 
-## Globals (Global Variable)
+## Globals (Global Variables)
 
 - anywhere you can access them
 
@@ -30,3 +33,20 @@
 | module        | info about current module (file)                   |
 | Fragmentation | Version                                            |
 | process       | info about env where the program is being executed |
+
+## Modules
+
+In CommonJS, Every file is a module by default
+when console logging module ex. console.log(module) => using global variable
+you can access module tree (object)
+
+![image](https://user-images.githubusercontent.com/102004753/206481227-a95a307e-55f6-4ef7-9809-a84590c37948.png)
+
+Hence, you can manipulate what should be in that export object
+
+```js
+const peter = "peter";
+module.exports = { peter };
+
+const { peter } = require("./...");
+```
