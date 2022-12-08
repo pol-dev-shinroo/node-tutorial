@@ -36,8 +36,8 @@
 
 ## Modules
 
-In CommonJS, Every file is a module by default
-when console logging module ex. console.log(module) => using global variable
+In CommonJS, Every file is a module by default.
+When console logging module (ex. console.log(module) => using global variable),
 you can access module tree (object)
 
 ![image](https://user-images.githubusercontent.com/102004753/206481227-a95a307e-55f6-4ef7-9809-a84590c37948.png)

@@ -14,3 +14,11 @@ const sayHi = require("./modules/utils");
 sayHi(john);
 sayHi(peter);
 // sayHi(secret);
+
+// practicing alternative exports
+
+const { items, person, functions } = require("./04-alternative-flavor");
+
+console.log("line 20", items, person, functions);
+
+functions.sayHi();
