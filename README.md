@@ -50,3 +50,5 @@ module.exports = { peter };
 
 const { peter } = require("./...");
 ```
+
+#### !!! Notice, once you require (ex. import), the file you are exporting will run by default even if you did not invoke it in the file you imported that module
