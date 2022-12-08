@@ -4,6 +4,7 @@
 - [REPL](#using-repl-in-nodejs)
 - [Global Variables](#globals-global-variables)
 - [Modules](#modules)
+- [Built in Modules](#built-in-modules)
 
 ## Browser vs Node
 
@@ -51,4 +52,9 @@ module.exports = { peter };
 const { peter } = require("./...");
 ```
 
-#### !!! Notice, once you require (ex. import), the file you are exporting will run by default even if you did not invoke it in the file you imported that module
+<span style="font-size: 20px;"> !!! Notice, once you require (ex. import), the file you are exporting will run by default even if you did not invoke it in the file you imported that module </span>
+
+## Built-in Modules
+
+- os modules
+- path modules
