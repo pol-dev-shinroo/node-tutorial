@@ -65,3 +65,9 @@ const { peter } = require("./...");
 
 Exmaples: readFileSync + writeFileSync vs readFile + writeFile
 two flavors: 1) async = non-blocking 2) sync = blocking
+
+## Http Module
+
+![code](https://user-images.githubusercontent.com/102004753/206632005-2a58705b-febb-49dc-99f9-e4baacc5ba97.png)
+
+<span style="font-size: 20px;"> !!! Hence, this is a server-side rendering as opposed to react which is client-side rendering (possible because it's SPA) </span>
