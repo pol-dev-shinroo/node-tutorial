@@ -59,6 +59,7 @@ const { peter } = require("./...");
 - os modules
 - path modules
 - fs (file system) modules
+- http modules
 
 ## Fs (file system) modules
 

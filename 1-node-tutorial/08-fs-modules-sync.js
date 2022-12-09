@@ -1,5 +1,7 @@
 const { readFileSync, writeFileSync } = require("fs");
 
+console.log("start");
+
 const first = readFileSync("./path/subfolder/first.txt", "utf-8");
 const second = readFileSync("./path/subfolder/second.txt", "utf-8");
 
@@ -12,4 +14,4 @@ writeFileSync(
   { flag: "a" }
 );
 
-console.log(first);
+console.log("start new task");
