@@ -58,3 +58,8 @@ const { peter } = require("./...");
 
 - os modules
 - path modules
+- fs (file system) modules
+
+## Fs (file system) modules
+
+two flavors: 1) async = non-blocking 2) sync = blocking
