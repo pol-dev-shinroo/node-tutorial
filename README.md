@@ -62,4 +62,5 @@ const { peter } = require("./...");
 
 ## Fs (file system) modules
 
+Exmaples: readFileSync + writeFileSync vs readFile + writeFile
 two flavors: 1) async = non-blocking 2) sync = blocking
