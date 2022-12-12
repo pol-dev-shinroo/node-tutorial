@@ -1,4 +1,10 @@
 const http = require("http");
+const { readFileSync } = require("fs");
+
+// get all files
+// the file is not read every time user requests!!!!
+// this code just runs once
+const homePage = readFileSync("./navbar-app/index.html");
 
 const server = http.createServer((req, res) => {
   console.log("user got into the server");
@@ -9,8 +15,8 @@ const server = http.createServer((req, res) => {
   const { url } = req;
 
   if (url === "/") {
-    res.writeHead(200, "asdfasdfd", { "content-type": "text/html" });
-    res.write(`<h1>Hello World</h1>`);
+    res.writeHead(200, "asdfasdfd", { "content-type": "text/plain" });
+    res.write(homePage);
     res.end();
   } else if (url === "/about") {
     res.writeHead(200, { "content-type": "text/html" });
