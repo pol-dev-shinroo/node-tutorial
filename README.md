@@ -5,6 +5,8 @@
 - [Global Variables](#globals-global-variables)
 - [Modules](#modules)
 - [Built in Modules](#built-in-modules)
+- [Dependencies](#create-packagejson-for-every-web-development-project)
+- [Nodemon](#nodemon)
 
 ## Browser vs Node
 
@@ -72,11 +74,34 @@ two flavors: 1) async = non-blocking 2) sync = blocking
 
 <span style="font-size: 20px;"> !!! Hence, this is a server-side rendering as opposed to react which is client-side rendering (possible because it's SPA) </span>
 
-## Create package.json
+## Create package.json (for every web development project)
 
-- package.json is a manifest file (stores info about projects and packages)
+- package.json is a manifest file (stores info about projects and packages/ libraries)
+- **_Metadata_**: package.json contains all the relevant data regarding the project
 
 ```cmd
  npm init (step-by-step approach)
  npm init -y
 ```
+
+There are **three types of dependencies** that are found in this file
+
+1. dependencies
+2. dev dependencies
+3. peer dependencies
+
+**dev dependencies**: it consists of all the packages that are used in the project **during the development phase, not in the production or testing environment**
+
+```cmd
+ npm install <package name> --save-dev
+ npm install <package name> -D
+```
+
+**peer dependencies**: consists of all the packages that are exactly required in the project or to the person who is downloading, and the version numbers should be the same
+**!!! They are only encountered when you publich your own package**
+
+## nodemon
+
+- dev dependecies: we do not need nodemon for production/ testing
+- it watches the app.js and displays the changes in real time
+- Hence, no need to write "node app.js" every time you change the app.js
