@@ -7,6 +7,7 @@
 - [Built in Modules](#built-in-modules)
 - [Dependencies](#create-packagejson-for-every-web-development-project)
 - [Nodemon](#nodemon)
+- [Package Version](#package-version)
 
 ## Browser vs Node
 
@@ -105,3 +106,22 @@ There are **three types of dependencies** that are found in this file
 - dev dependecies: we do not need nodemon for production/ testing
 - it watches the app.js and displays the changes in real time
 - Hence, no need to write "node app.js" every time you change the app.js
+
+## Package version
+
+ex) "nodemon": "^2.0.20"
+2 is the major change
+0 is the minor change (backward compatible)
+20 is the bug fix
+
+## Event Loop
+
+https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/
+https://www.korecmblog.com/node-js-event-loop/
+https://nodejs.dev/en/learn/introduction-to-nodejs/
+https://www.youtube.com/watch?v=PNa9OMajw9w
+https://www.youtube.com/watch?v=8aGhZQkoFbQ
+https://course-api.com/
+
+Async means non-blocking => does not block the execution of other functions
+Sync means blocking => blocks the execution of other functions
