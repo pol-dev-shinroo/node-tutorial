@@ -8,8 +8,9 @@
 - [Dependencies](#create-packagejson-for-every-web-development-project)
 - [Nodemon](#nodemon)
 - [Package Version](#package-version)
-- [Event Loop](#event-loop-need-to-document-this-later)
+- [Event Loop](#event-loop-advanced-topic--need-to-document-deeper-later-on)
 - [Events](#events)
+- [Streams](#streams)
 
 ## Browser vs Node
 
@@ -116,7 +117,7 @@ ex) "nodemon": "^2.0.20"
 0 is the minor change (backward compatible)
 20 is the bug fix
 
-## Event Loop (need to document this later...)
+## Event Loop (advanced topic => need to document deeper later on)
 
 https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/
 https://www.korecmblog.com/node-js-event-loop/
@@ -142,3 +143,18 @@ https://stackoverflow.com/questions/8416874/whats-the-differences-between-blocki
 
 - Event-driven Programming
 - Used Heavily in Node.js
+- ex. when user clicks button, our program handles it (External Events)
+
+## Streams (advanced topic => need to document deeper later on)
+
+=> At its simplest, streams are used to read and write sequentially
+
+In Node.js, there are 4 different types of streams
+
+- Writeable : used to write data sequentially
+- Readable : used to read data sequentially
+- Duplex: used to both read and write data sequentially
+- Transform: where data can be modified, when writing or reading data
+
+\*\*\* Streams extends event emitter class
+=> meaning, we can use events on streams
