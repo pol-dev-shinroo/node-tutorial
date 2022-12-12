@@ -8,6 +8,8 @@
 - [Dependencies](#create-packagejson-for-every-web-development-project)
 - [Nodemon](#nodemon)
 - [Package Version](#package-version)
+- [Event Loop](#event-loop-need-to-document-this-later)
+- [Events](#events)
 
 ## Browser vs Node
 
@@ -114,7 +116,7 @@ ex) "nodemon": "^2.0.20"
 0 is the minor change (backward compatible)
 20 is the bug fix
 
-## Event Loop
+## Event Loop (need to document this later...)
 
 https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/
 https://www.korecmblog.com/node-js-event-loop/
@@ -124,4 +126,19 @@ https://www.youtube.com/watch?v=8aGhZQkoFbQ
 https://course-api.com/
 
 Async means non-blocking => does not block the execution of other functions
-Sync means blocking => blocks the execution of other functions
+Sync generally means an activity that must wait for a reply before the thread can move forward
+
+https://jh-7.tistory.com/25
+
+https://stackoverflow.com/questions/8416874/whats-the-differences-between-blocking-with-synchronous-nonblocking-and-asynch
+
+![nestedCallbacks](https://user-images.githubusercontent.com/102004753/207067415-52daeffc-aeca-48d7-80cc-cb1ef68d3bf0.png)
+
+![promise](https://user-images.githubusercontent.com/102004753/207067620-48ad2538-67ce-4b56-9a0e-df5ab726ae59.png)
+
+![asyncAwait](https://user-images.githubusercontent.com/102004753/207067783-7dcd6be6-07f3-4154-8520-a701843b0ccc.png)
+
+## Events
+
+- Event-driven Programming
+- Used Heavily in Node.js
