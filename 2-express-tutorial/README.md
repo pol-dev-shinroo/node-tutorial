@@ -23,3 +23,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#successful_responses
 
 Content-Type: (MIME TYPE)
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types
+
+## Setting up servers using just HTTP module is so tiring....
+
+![image](https://user-images.githubusercontent.com/102004753/207133838-5f1a5dc2-ce52-4f0f-8bac-61a9dc93d392.png)
