@@ -27,3 +27,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types
 ## Setting up servers using just HTTP module is so tiring....
 
 ![image](https://user-images.githubusercontent.com/102004753/207133838-5f1a5dc2-ce52-4f0f-8bac-61a9dc93d392.png)
+
+## HTTP methods
+
+![image](https://user-images.githubusercontent.com/102004753/207427962-81ab5c59-c608-4497-bf33-6ca7cf715a89.png)
