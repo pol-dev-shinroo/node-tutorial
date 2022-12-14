@@ -9,16 +9,29 @@ const { products, people } = require("./data");
 app.use(express.static(path.join(__dirname, "../react-app/build")));
 
 app.get("/api/products", (req, res) => {
-  /** sending the whole json */
-  // res.status(201).json(dataJson);
-  /** 객체 조작 */
-  const newProducts = products.map((item) => {
-    const { id, name, image, price } = item;
-    return { id, name, image, price };
+  res.json(products);
+});
+app.get("/api/people", (req, res) => {
+  res.json(people);
+});
+
+app.get("/api/products/:productID", (req, res) => {
+  const { productID } = req.params;
+  console.log("productId", productID);
+
+  // by default params value is string
+  const product = products.find((item) => {
+    return item.id === Number(productID);
   });
-  res.json(newProducts);
+  console.log("product", product);
+
+  if (product === undefined) {
+    res.status(404).send("no matching id");
+  } else {
+    res.json(product);
+  }
 });
 
 app.listen(packageJson.port, () => {
-  console.log(`listening on port ${packageJson.port} `);
+  console.log(`listening on port ${packageJson.port}`);
 });

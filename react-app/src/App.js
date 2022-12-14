@@ -1,22 +1,46 @@
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 function App() {
   const baseURL = "http://localhost:8070";
 
-  const handleProducts = async () => {
-    const res = await axios.get(`${baseURL}/api/products`);
-    console.log(res);
-  };
+  const [data, setData] = useState({ products: [], people: [] });
 
-  const handlePeopel = async () => {
-    const res = await axios.get(`${baseURL}/api/people`);
+  console.log(data);
+
+  useEffect(() => {
+    const handleProductsApi = async () => {
+      const res = await axios.get(`${baseURL}/api/products`);
+      setData((prev) => {
+        return { ...prev, products: res.data };
+      });
+    };
+    const handlePeopleApi = async () => {
+      const res = await axios.get(`${baseURL}/api/people`);
+      setData((prev) => {
+        return { ...prev, people: res.data };
+      });
+    };
+    handleProductsApi();
+    handlePeopleApi();
+  }, []);
+
+  const getProductById = async (id) => {
+    const res = await axios.get(`${baseURL}/api/products/${id}`);
     console.log(res);
   };
 
   return (
     <>
-      <button onClick={handleProducts}>Products</button>
-      <button onClick={handlePeopel}>People</button>
+      {data.products.map((item, idx) => {
+        const { id, name } = item;
+        console.log(typeof id);
+        return <button onClick={() => getProductById(id)}>{name}</button>;
+      })}
+      <button onClick={() => getProductById("")}>empty string</button>
+      <button onClick={() => getProductById("asdfasdf")}>wrong string</button>
+      <button onClick={() => getProductById(23424)}>wrong number</button>
+      <button onClick={() => getProductById()}>undefined</button>
     </>
   );
 }
