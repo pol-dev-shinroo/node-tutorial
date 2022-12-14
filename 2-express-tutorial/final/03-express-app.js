@@ -3,10 +3,10 @@ const path = require("path");
 
 const app = express();
 
-app.use(express.static("../navbar-app/public"));
+app.use(express.static("./navbar-app/public"));
 
 // app.get("/", (req, res) => {
-//   res.sendFile(path.resolve(__dirname, "../navbar-app/index.html"));
+//   res.status(200).sendFile(path.resolve(__dirname, "./navbar-app/index.html"));
 // });
 
 app.all("*", (req, res) => {
@@ -14,5 +14,5 @@ app.all("*", (req, res) => {
 });
 
 app.listen(5000, () => {
-  console.log("server is listening on port 1");
+  console.log("server is listening on port 5000");
 });
