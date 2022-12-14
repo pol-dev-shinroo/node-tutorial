@@ -4,7 +4,9 @@
   "description": "express tutorial",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "kill": "kill $(sudo lsof -t -i:8070) &",
+    "react-start": "npm run kill &&cd .. && cd react-app && npm run build && cd .. && cd 2-express-tutorial && npm run start"
   },
   "keywords": [],
   "author": "jaehyuk kim",
