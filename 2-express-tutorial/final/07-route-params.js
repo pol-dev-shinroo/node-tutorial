@@ -32,10 +32,6 @@ app.get("/api/products/:productID", (req, res) => {
   }
 });
 
-app.get("/api/products/:productID/reviews/:reviewID", (req, res) => {
-  console.log(req.params);
-});
-
 app.listen(packageJson.port, () => {
   console.log(`listening on port ${packageJson.port}`);
 });
