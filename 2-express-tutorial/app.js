@@ -1,18 +1,15 @@
 const express = require("express");
 const app = express();
-const packageJson = require("../react-app/package.json");
-const morgan = require("morgan");
+const { products, people } = require("./data");
 
-app.use(morgan("tiny"));
+console.log(products);
 
-app.get("/", (req, res) => {
-  res.send("Home");
+app.use(express.static("./methods-public"));
+
+app.get("/api/people", (req, res) => {
+  res.status(200).json({ res: true, data: people });
 });
 
-app.get("/api/products", (req, res) => {
-  res.json({ res: true, data: [] });
-});
-
-app.listen(packageJson.port, () => {
-  console.log("listening on port", packageJson.port);
+app.listen(5000, () => {
+  console.log("listening on port", 5000);
 });
