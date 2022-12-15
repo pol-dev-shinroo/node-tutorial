@@ -3,7 +3,7 @@ const app = express();
 const packageJson = require("../react-app/package.json");
 const logger = require("./logger");
 
-app.use(logger);
+app.use("/about", logger);
 
 app.get("/", (req, res) => {
   res.send("Home");
