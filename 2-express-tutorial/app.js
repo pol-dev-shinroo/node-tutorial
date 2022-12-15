@@ -29,6 +29,32 @@ app.post("/api/people", (req, res) => {
   res.status(400).send({ res: false });
 });
 
+// put method = for modifying data
+// put method - can get both params and body
+app.put("/api/people/:id", (req, res) => {
+  console.log(req.params);
+  console.log(req.body);
+  const { id } = req.params;
+  const { name } = req.body;
+
+  const person = people.find((item) => {
+    return item.id === Number(id);
+  });
+  if (!person) {
+    res.status(400).json({ res: false });
+  }
+
+  const newPeople = people.map((item) => {
+    if (item.id === Number(id)) {
+      return { ...item, name };
+    } else {
+      return item;
+    }
+  });
+
+  res.status(200).json(newPeople);
+});
+
 app.post("/login", (req, res) => {
   console.log(req.body);
   console.log(typeof req.body);
