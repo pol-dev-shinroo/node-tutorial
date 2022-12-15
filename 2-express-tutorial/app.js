@@ -15,27 +15,36 @@ app.get("/api/people", (req, res) => {
   res.json(people);
 });
 
-app.get("/api/products/:productID", (req, res) => {
-  const { productID } = req.params;
-  console.log("productId", productID);
+app.get("/api/v1/products", (req, res) => {
+  // {search: "a", limit: "3"}
+  const { search, limit } = req.query;
 
-  // by default params value is string
-  const product = products.find((item) => {
-    return item.id === Number(productID);
-  });
-  console.log("product", product);
+  let searchProdList = [];
 
-  if (product === undefined) {
-    res.status(404).send("no matching id");
-  } else {
-    res.json(product);
+  if (search) {
+    searchProdList = products.filter((item) => {
+      if (item.name.startsWith(search)) {
+        return item;
+      }
+    });
   }
+
+  if (limit) {
+    searchProdList = searchProdList.slice(0, Number(limit));
+  }
+
+  if (searchProdList.length === 0) {
+    return res.json({ result: true, data: [] });
+  }
+
+  res.status(200).json({ result: ture, data: searchProdList });
 });
 
-app.get("/api/products/:productID/reviews/:reviewID", (req, res) => {
-  console.log(req.params);
+app.all("*", (req, res) => {
+  console.log(req);
+  res.status(400).json({ res: false, msg: "wrong request" });
 });
 
 app.listen(packageJson.port, () => {
-  console.log(`listening on port ${packageJson.port}`);
+  console.log("listening on port " + packageJson.port);
 });

@@ -31,3 +31,9 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types
 ## HTTP methods
 
 ![image](https://user-images.githubusercontent.com/102004753/207427962-81ab5c59-c608-4497-bf33-6ca7cf715a89.png)
+
+## Params
+
+![image](https://user-images.githubusercontent.com/102004753/207846084-b74331c2-81b0-4d8a-95ec-2f531067d3c8.png)
+
+https://www.semrush.com/blog/url-parameters/

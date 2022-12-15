@@ -30,6 +30,13 @@ function App() {
     console.log(res);
   };
 
+  const getProductbyQuery = async (search, limit) => {
+    const res = await axios.get(
+      `${baseURL}/api/v1/products?search=${search}&limit=${limit}`
+    );
+    console.log(res);
+  };
+
   return (
     <>
       {data.products.map((item, idx) => {
@@ -41,6 +48,10 @@ function App() {
       <button onClick={() => getProductById("asdfasdf")}>wrong string</button>
       <button onClick={() => getProductById(23424)}>wrong number</button>
       <button onClick={() => getProductById()}>undefined</button>
+
+      <div>
+        <button onClick={() => getProductbyQuery("z", "1")}>스티링 쿼리</button>
+      </div>
     </>
   );
 }
