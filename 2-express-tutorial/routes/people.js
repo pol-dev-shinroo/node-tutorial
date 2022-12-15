@@ -1,21 +1,12 @@
 const express = require("express");
-const app = express();
-let { products, people } = require("./data");
-const morgan = require("morgan");
-app.use(morgan("tiny"));
+const router = express.Router();
+let { people } = require("../data");
 
-app.use(express.static("./methods-public"));
-// req 보낼때 form-urlencoded 형식으로 보내줘야함 => for parsing form data
-app.use(express.urlencoded({ extended: false }));
-
-// req 보낼때 json형식으로 보내려면....
-app.use(express.json());
-
-app.get("/api/people", (req, res) => {
+router.get("/", (req, res) => {
   res.status(200).json({ res: true, data: people });
 });
 
-app.post("/api/people", (req, res) => {
+router.post("/", (req, res) => {
   console.log(req.body);
   const person = people.find((item) => {
     return item.name === req.body.name;
@@ -31,7 +22,7 @@ app.post("/api/people", (req, res) => {
 
 // put method = for modifying data
 // put method - can get both params and body
-app.put("/api/people/:id", (req, res) => {
+router.put("/:id", (req, res) => {
   console.log(req.params);
   console.log(req.body);
   const { id } = req.params;
@@ -57,7 +48,7 @@ app.put("/api/people/:id", (req, res) => {
 
 // delete method - accepts both params and body!!! => not only params
 // -> but theoretically, for deleting you just need id
-app.delete("/api/people/:id", (req, res) => {
+router.delete("/:id", (req, res) => {
   console.log(req.params);
   console.log(req.body);
 
@@ -75,16 +66,4 @@ app.delete("/api/people/:id", (req, res) => {
   res.status(200).json({ res: true, data: newPeople });
 });
 
-app.post("/login", (req, res) => {
-  console.log(req.body);
-  console.log(typeof req.body);
-  const { name } = req.body;
-  if (name === "") {
-    return res.status(400).send("please provide username");
-  }
-  res.status(200).send(`welcome ${name}`);
-});
-
-app.listen(5000, () => {
-  console.log("listening on port", 5000);
-});
+module.exports = router;
