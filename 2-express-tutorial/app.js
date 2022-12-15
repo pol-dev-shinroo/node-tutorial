@@ -33,11 +33,15 @@ app.get("/api/v1/products", (req, res) => {
     searchProdList = searchProdList.slice(0, Number(limit));
   }
 
+  if (!search && !limit) {
+    return res.status(200).json({ result: true, data: products });
+  }
+
   if (searchProdList.length === 0) {
     return res.json({ result: true, data: [] });
   }
 
-  res.status(200).json({ result: ture, data: searchProdList });
+  res.status(200).json({ result: true, data: searchProdList });
 });
 
 app.all("*", (req, res) => {
