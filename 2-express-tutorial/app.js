@@ -41,7 +41,7 @@ app.put("/api/people/:id", (req, res) => {
     return item.id === Number(id);
   });
   if (!person) {
-    res.status(400).json({ res: false });
+    return res.status(400).json({ res: false });
   }
 
   const newPeople = people.map((item) => {
@@ -53,6 +53,26 @@ app.put("/api/people/:id", (req, res) => {
   });
 
   res.status(200).json(newPeople);
+});
+
+// delete method - accepts both params and body!!! => not only params
+// -> but theoretically, for deleting you just need id
+app.delete("/api/people/:id", (req, res) => {
+  console.log(req.params);
+  console.log(req.body);
+
+  const person = people.find((item) => {
+    return item.id === Number(req.params.id);
+  });
+  if (!person) {
+    return res.status(400).json({ res: false });
+  }
+
+  const newPeople = people.filter((item) => {
+    return item.id !== Number(req.params.id);
+  });
+
+  res.status(200).json({ res: true, data: newPeople });
 });
 
 app.post("/login", (req, res) => {
