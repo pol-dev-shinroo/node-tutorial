@@ -19,6 +19,7 @@ router.put("/:id", updatePerson);
 // -> but theoretically, for deleting you just need id
 router.delete("/:id", deletePerson);
 
+// chaining method => lesser code
 // router.route("/").get(getPeople).post(createPerson);
 // router.route("/:id").put(updatePerson).delete(deletePerson);
 
