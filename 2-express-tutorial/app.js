@@ -3,10 +3,10 @@ const app = express();
 const packageJson = require("../react-app/package.json");
 const { loggerFirst, loggerSecond } = require("./logger");
 
-app.use("/", loggerFirst);
-app.use("/api", loggerSecond);
+app.use("/", [loggerFirst, loggerSecond]);
 
 app.get("/", (req, res) => {
+  console.log(req.authorized);
   res.send("Home");
 });
 app.get("/about", (req, res) => {
