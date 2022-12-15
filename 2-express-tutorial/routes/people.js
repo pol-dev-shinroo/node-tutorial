@@ -19,4 +19,7 @@ router.put("/:id", updatePerson);
 // -> but theoretically, for deleting you just need id
 router.delete("/:id", deletePerson);
 
+// router.route("/").get(getPeople).post(createPerson);
+// router.route("/:id").put(updatePerson).delete(deletePerson);
+
 module.exports = router;
