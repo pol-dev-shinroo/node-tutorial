@@ -20,8 +20,10 @@ app.post("/api/people", (req, res) => {
   const person = people.find((item) => {
     return item.name === req.body.name;
   });
-  console.log(person);
+  console.log(people);
   if (person) {
+    people = [...people, { id: people.length + 1, name: req.body.name }];
+    console.log(people);
     return res.status(200).json({ person: person.name });
   }
   res.status(400).send({ res: false });
