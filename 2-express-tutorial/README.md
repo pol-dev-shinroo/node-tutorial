@@ -37,3 +37,5 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types
 ![image](https://user-images.githubusercontent.com/102004753/207846084-b74331c2-81b0-4d8a-95ec-2f531067d3c8.png)
 
 https://www.semrush.com/blog/url-parameters/
+
+## Middleware

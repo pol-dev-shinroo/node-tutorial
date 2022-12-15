@@ -1,52 +1,31 @@
 const express = require("express");
 const app = express();
-const path = require("path");
-
 const packageJson = require("../react-app/package.json");
 
-const { products, people } = require("./data");
+// req => middleware => res
 
-app.use(express.static(path.join(__dirname, "../react-app/build")));
+const logger = (req, res, next) => {
+  const method = req.method;
+  const url = req.url;
+  const time = new Date().getFullYear();
+  console.log(method, url, time);
+  next();
+  // you can also terminate here...
+  // res.send("Testing");
+};
 
-app.get("/api/products", (req, res) => {
-  res.json(products);
+const secondLogger = (req, res, next) => {
+  console.log("second logger");
+  next();
+};
+
+// the second function parameter is middleware (ex.logger)
+// hence it is called the "middleware function"
+app.get("/", logger, secondLogger, (req, res) => {
+  res.send("Home");
 });
-app.get("/api/people", (req, res) => {
-  res.json(people);
-});
-
-app.get("/api/v1/products", (req, res) => {
-  // {search: "a", limit: "3"}
-  const { search, limit } = req.query;
-
-  let searchProdList = [];
-
-  if (search) {
-    searchProdList = products.filter((item) => {
-      if (item.name.startsWith(search)) {
-        return item;
-      }
-    });
-  }
-
-  if (limit) {
-    searchProdList = searchProdList.slice(0, Number(limit));
-  }
-
-  if (!search && !limit) {
-    return res.status(200).json({ result: true, data: products });
-  }
-
-  if (searchProdList.length === 0) {
-    return res.json({ result: true, data: [] });
-  }
-
-  res.status(200).json({ result: true, data: searchProdList });
-});
-
-app.all("*", (req, res) => {
-  console.log(req);
-  res.status(400).json({ res: false, msg: "wrong request" });
+app.get("/about", logger, (req, res) => {
+  res.send("About");
 });
 
 app.listen(packageJson.port, () => {
