@@ -15,6 +15,18 @@ app.get("/api/people", (req, res) => {
   res.status(200).json({ res: true, data: people });
 });
 
+app.post("/api/people", (req, res) => {
+  console.log(req.body);
+  const person = people.find((item) => {
+    return item.name === req.body.name;
+  });
+  console.log(person);
+  if (person) {
+    return res.status(200).json({ person: person.name });
+  }
+  res.status(400).send({ res: false });
+});
+
 app.post("/login", (req, res) => {
   console.log(req.body);
   console.log(typeof req.body);
