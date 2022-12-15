@@ -8,7 +8,6 @@ const loggerFirst = (req, res, next) => {
 
 // We cannot directly pass data to the next middleware, but we can send data through the request object.
 const loggerSecond = (req, res, next) => {
-  console.log(req.query);
   const { pwd } = req.query;
   if (pwd === "1234") {
     req.authorized = { status: true };
