@@ -7,5 +7,5 @@ const TaskSchema = new mongoose.Schema({
   completed: Boolean,
 });
 
-// think of models = collections in DB
+// think of models = collections in DB => use it in our controller
 module.exports = mongoose.model("Task", TaskSchema);
