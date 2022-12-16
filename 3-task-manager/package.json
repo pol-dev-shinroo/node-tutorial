@@ -1,0 +1,16 @@
+{
+  "name": "3-task-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "port": 5000,
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "keywords": [],
+  "author": "jaehyuk",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
