@@ -27,3 +27,5 @@ https://www.mongodb.com/docs/atlas/getting-started/
 - store JSON
 - easy to get started
 - free cloud hosting - ATLAS
+
+## ENV VARS
