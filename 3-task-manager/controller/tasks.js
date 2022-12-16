@@ -1,5 +1,7 @@
 const Task = require("../models/Task");
 
+// use static functions (queries) from Task model
+
 const getAllTasks = async (req, res) => {
   try {
     const tasks = await Task.find({});
@@ -37,15 +39,31 @@ const getTask = async (req, res) => {
   }
 };
 
-const updateTask = (req, res) => {
-  console.log(req.params);
-  console.log(req.body);
-  res.status(200).json({ res: true });
+const updateTask = async (req, res) => {
+  try {
+    console.log(req.params);
+    console.log(req.body);
+    const task = await Task.findOneAndUpdate({ _id: req.params.id }, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    console.log(task);
+    res.status(201).json({ res: true, task });
+  } catch (err) {
+    res.status(400).json({ res: false });
+  }
 };
 
-const deleteTask = (req, res) => {
-  console.log(req.params);
-  res.status(200).json({ res: true });
+const deleteTask = async (req, res) => {
+  try {
+    console.log(req.params);
+    // findOneAndDelete is also fine...
+    const task = await Task.findByIdAndDelete({ _id: req.params.id });
+    console.log(task);
+    res.status(200).json({ res: true, task: task });
+  } catch (err) {
+    res.status(400).json({ res: false, msg: err });
+  }
 };
 
 module.exports = { getAllTasks, createTask, getTask, updateTask, deleteTask };

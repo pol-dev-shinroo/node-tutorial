@@ -32,3 +32,8 @@ https://www.mongodb.com/docs/atlas/getting-started/
 
 - validation
   https://mongoosejs.com/docs/validation.html
+
+## cast error - id
+
+- if the id length (in other words, the syntax) matches, it will not return go into catch
+- if the syntax is wrong (=cast error), it will go through catch
