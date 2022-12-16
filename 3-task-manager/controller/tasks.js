@@ -7,9 +7,13 @@ const getAllTasks = (req, res) => {
 const createTask = async (req, res) => {
   console.log(req.body);
   const { name } = req.body;
-
-  const task = await Task.create({ name });
-  res.status(201).json({ res: true, task });
+  try {
+    const task = await Task.create(req.body);
+    res.status(201).json({ res: true, task });
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({ res: false });
+  }
 };
 
 const getTask = (req, res) => {

@@ -28,4 +28,7 @@ https://www.mongodb.com/docs/atlas/getting-started/
 - easy to get started
 - free cloud hosting - ATLAS
 
-## ENV VARS
+## Mongoose Schema
+
+- validation
+  https://mongoosejs.com/docs/validation.html
