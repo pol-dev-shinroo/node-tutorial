@@ -43,3 +43,10 @@ https://www.mongodb.com/docs/atlas/getting-started/
 - patch is for partial update
 - put is for the whole replacement
   => make sure to remove default from schema + add overwrite: true to option in our query/ static functions
+
+## response format
+
+- front end uses axios, which automatically creates "data" key,
+  => hence, in the backend, simply pass the result data without creating extra "data" key
+- front end also uses try catch
+  => hence, in the backend, no need to do {status: "success"} or {success: true}

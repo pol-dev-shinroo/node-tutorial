@@ -6,7 +6,7 @@ const getAllTasks = async (req, res) => {
   try {
     const tasks = await Task.find({});
     console.log(tasks);
-    res.status(200).json({ tasks });
+    res.status(200).json({ tasks, amount: tasks.length });
   } catch (err) {
     console.log(err);
     res.status(400).json({ msg: err });
