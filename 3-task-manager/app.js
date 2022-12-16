@@ -5,6 +5,7 @@ const path = require("path");
 const morgan = require("morgan");
 const packageJson = require("./package.json");
 const tasks = require("./routes/tasks");
+require("dotenv").config();
 
 app.use(morgan("tiny"));
 
@@ -17,7 +18,7 @@ app.use("/api/v1/tasks", tasks);
 
 const start = async () => {
   try {
-    await connectDB();
+    await connectDB(process.env.MONGO_URI);
     console.log("Connected to DB");
     app.listen(packageJson.port, () => {
       console.log("listening on port " + packageJson.port);
