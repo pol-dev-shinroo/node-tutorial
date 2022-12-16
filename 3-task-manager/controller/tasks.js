@@ -1,7 +1,14 @@
 const Task = require("../models/Task");
 
-const getAllTasks = (req, res) => {
-  res.status(200).json({ res: true });
+const getAllTasks = async (req, res) => {
+  try {
+    const tasks = await Task.find({});
+    console.log(tasks);
+    res.status(200).json({ tasks });
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({ msg: err });
+  }
 };
 
 const createTask = async (req, res) => {
@@ -12,7 +19,7 @@ const createTask = async (req, res) => {
     res.status(201).json({ res: true, task });
   } catch (err) {
     console.log(err);
-    res.status(400).json({ res: false });
+    res.status(400).json({ res: false, msg: err });
   }
 };
 
