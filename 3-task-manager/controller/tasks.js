@@ -45,7 +45,7 @@ const updateTask = async (req, res) => {
     console.log(req.body);
     const task = await Task.findOneAndUpdate({ _id: req.params.id }, req.body, {
       new: true,
-      runValidators: true,
+      runValidators: true, // without it, it will accept "" as well
     });
     console.log(task);
     res.status(201).json({ res: true, task });
@@ -66,4 +66,27 @@ const deleteTask = async (req, res) => {
   }
 };
 
-module.exports = { getAllTasks, createTask, getTask, updateTask, deleteTask };
+const editTask = async (req, res) => {
+  try {
+    console.log(req.params);
+    console.log(req.body);
+    const task = await Task.findOneAndUpdate({ _id: req.params.id }, req.body, {
+      new: true,
+      runValidators: true, // without it, it will accept "" as well
+      overwrite: true, // for put method
+    });
+    console.log(task);
+    res.status(201).json({ res: true, task });
+  } catch (err) {
+    res.status(400).json({ res: false });
+  }
+};
+
+module.exports = {
+  getAllTasks,
+  createTask,
+  getTask,
+  updateTask,
+  deleteTask,
+  editTask,
+};

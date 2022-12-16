@@ -37,3 +37,9 @@ https://www.mongodb.com/docs/atlas/getting-started/
 
 - if the id length (in other words, the syntax) matches, it will not return go into catch
 - if the syntax is wrong (=cast error), it will go through catch
+
+## patch vs put
+
+- patch is for partial update
+- put is for the whole replacement
+  => make sure to remove default from schema + add overwrite: true to option in our query/ static functions
