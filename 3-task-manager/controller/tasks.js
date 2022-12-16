@@ -8,14 +8,18 @@ const createTask = (req, res) => {
 };
 
 const getTask = (req, res) => {
+  console.log(req.params);
   res.status(200).json({ res: true });
 };
 
 const updateTask = (req, res) => {
+  console.log(req.params);
+  console.log(req.body);
   res.status(200).json({ res: true });
 };
 
 const deleteTask = (req, res) => {
+  console.log(req.params);
   res.status(200).json({ res: true });
 };
 
