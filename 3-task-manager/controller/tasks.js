@@ -1,31 +1,34 @@
 const asyncWrapper = require("../middleware/async");
 const Task = require("../models/Task");
+const { createCustomError } = require("../errors/custom-error");
 
 // use static functions (queries) from Task model
 
 const getAllTasks = asyncWrapper(async (req, res) => {
   const tasks = await Task.find({});
-  res.status(200).json({ tasks, amount: tasks.length });
+  // api/v1/tasks/:id
+  if (req.params.id === "") {
+    return res.status(400).json({ res: false, msg: "sdfsdf" });
+  }
+  res.status(201).json({ res: true, data: tasks });
 });
 
 const createTask = asyncWrapper(async (req, res) => {
-  console.log(req.body);
   const { name } = req.body;
   const task = await Task.create(req.body);
   res.status(201).json({ res: true, task });
 });
 
-const getTask = asyncWrapper(async (req, res) => {
-  const task = await Task.findOne({ _id: req.params.id });
+const getTask = asyncWrapper(async (req, res, next) => {
+  const { id: taskID } = req.params;
+  const task = await Task.findOne({ _id: taskID });
   if (!task) {
-    return res.status(400).json({ msg: `No task with id ${task.id}` });
+    return next(createCustomError(`No task with id : ${taskID}`, 404));
   }
   res.status(201).json({ task });
 });
 
 const updateTask = asyncWrapper(async (req, res) => {
-  console.log(req.params);
-  console.log(req.body);
   const task = await Task.findOneAndUpdate({ _id: req.params.id }, req.body, {
     new: true,
     runValidators: true, // without it, it will accept "" as well
@@ -35,7 +38,6 @@ const updateTask = asyncWrapper(async (req, res) => {
 });
 
 const deleteTask = asyncWrapper(async (req, res) => {
-  console.log(req.params);
   // findOneAndDelete is also fine...
   const task = await Task.findByIdAndDelete({ _id: req.params.id });
   console.log(task);
@@ -43,14 +45,11 @@ const deleteTask = asyncWrapper(async (req, res) => {
 });
 
 const editTask = asyncWrapper(async (req, res) => {
-  console.log(req.params);
-  console.log(req.body);
   const task = await Task.findOneAndUpdate({ _id: req.params.id }, req.body, {
     new: true,
     runValidators: true, // without it, it will accept "" as well
     overwrite: true, // for put method
   });
-  console.log(task);
   res.status(201).json({ res: true, task });
 });
 
