@@ -75,3 +75,18 @@ obj = {}; // not allowed, because we are trying to reassign the value of the `ob
 ```
 
 ![image](https://user-images.githubusercontent.com/102004753/209632807-2a06bc4d-abd5-45b9-a3fa-ed7875f0152c.png)
+
+## MongoDB query operators
+
+https://www.mongodb.com/docs/manual/reference/operator/query/
+
+```js
+const getAllProductsStatic = async (req, res) => {
+  const search = "albany";
+  const products = await Product.find({
+    featured: false,
+    name: { $regex: search, $options: "i" },
+  }); // filters
+  res.status(200).json({ msg: products, nbHits: products.length });
+};
+```
