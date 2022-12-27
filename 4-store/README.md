@@ -114,3 +114,28 @@ db.collection.find().sort({ age: -1 });
 
 db.collection.find().sort({ name: 1, age: -1 });
 ```
+
+## select
+
+```js
+// returns only the selected fields
+let result = Product.find(queryObj);
+if (fields) {
+  const filedsList = fields.split(",").join("");
+  result = result.select(filedsList);
+}
+const products = await result;
+```
+
+## skip
+
+- the skip() method is used to specify the number of documents to skip in a query.
+- It is often used in conjunction with the limit() method to paginate the results of a query.
+
+```js
+const page = Number(req.query.page) || 1;
+const limit = Number(req.query.limit) || 10;
+const skip = (page - 1) * limit; // skip how many number (if page = 1 => skip 0), if page = 2 => skip 10
+
+const products = await result.skip(skip).limit(limit);
+```
