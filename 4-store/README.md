@@ -65,3 +65,11 @@ start();
 ```
 
 - if wrong value: => will throw error
+
+## object mutation in javascript
+
+```js
+const obj = {};
+obj.a = 1; // allowed, because we are mutating the object, not reassigning the value of the `obj` variable
+obj = {}; // not allowed, because we are trying to reassign the value of the `obj` variable
+```
