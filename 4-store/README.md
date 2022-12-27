@@ -73,3 +73,5 @@ const obj = {};
 obj.a = 1; // allowed, because we are mutating the object, not reassigning the value of the `obj` variable
 obj = {}; // not allowed, because we are trying to reassign the value of the `obj` variable
 ```
+
+![image](https://user-images.githubusercontent.com/102004753/209632807-2a06bc4d-abd5-45b9-a3fa-ed7875f0152c.png)

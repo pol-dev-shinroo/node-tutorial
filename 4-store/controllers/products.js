@@ -10,10 +10,13 @@ const getAllProductsStatic = async (req, res) => {
 };
 
 const getAllProducts = async (req, res) => {
-  const { featured, comapny } = req.query;
+  const { featured, company } = req.query;
   const queryObj = {};
   if (featured) {
     queryObj.featured = featured === "true" ? true : false;
+  }
+  if (company) {
+    queryObj.company = company;
   }
   console.log(queryObj);
   const products = await Product.find(queryObj);
