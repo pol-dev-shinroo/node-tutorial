@@ -90,3 +90,27 @@ const getAllProductsStatic = async (req, res) => {
   res.status(200).json({ msg: products, nbHits: products.length });
 };
 ```
+
+## sort
+
+```js
+// sort documents by the property name of company in a ascending order
+
+db.collection.find({}).sort("company");
+
+// sort documents by the property name of company in a descending order
+
+db.collection.find({}).sort("-company");
+
+// sort a collection of documents by the "age" field in ascending order:
+
+db.collection.find().sort({ age: 1 });
+
+// To sort the documents in descending order,
+
+db.collection.find().sort({ age: -1 });
+
+// multiple fields.
+
+db.collection.find().sort({ name: 1, age: -1 });
+```
