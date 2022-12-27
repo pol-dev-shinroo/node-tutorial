@@ -139,3 +139,21 @@ const skip = (page - 1) * limit; // skip how many number (if page = 1 => skip 0)
 
 const products = await result.skip(skip).limit(limit);
 ```
+
+## how to filter property value if the property value is in the form of objects in array
+
+```js
+Model.find(
+  {
+    items: {
+      $elemMatch: {
+        name: "item1",
+        price: { $gt: 10 },
+      },
+    },
+  },
+  (error, documents) => {
+    // Do something with the documents
+  }
+);
+```
