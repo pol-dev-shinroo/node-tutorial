@@ -35,12 +35,14 @@ UserSchema.pre("save", async function (next) {
 });
 
 UserSchema.methods.getName = function () {
+  // can invoke the instance of User
   return this.name;
 };
 
 UserSchema.methods.createJWT = function () {
-  return jwt.sign({ userId: this._id, name: this.name }, "jwtSecret", {
-    expiresIn: "30d",
+  // can invoke the instance of User
+  return jwt.sign({ userId: this._id, name: this.name }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_LIFETIME,
   });
 };
 
