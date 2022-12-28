@@ -28,17 +28,11 @@ const login = async (req, res) => {
 };
 
 const dashboard = async (req, res) => {
-  const authHeader = req.headers.authorization;
-
-  if (!authHeader || !authHeader.startsWith("")) {
-    throw new customAPIError("No token", 400);
-  }
-
-  const token = authHeader.split(" ")[1];
-  console.log(token);
-
+  console.log(req.user);
   const luckNumber = Math.floor(Math.random() * 100);
-  res.status(200).json({ msg: `Hello, John Doe`, secret: luckNumber });
+  res
+    .status(200)
+    .json({ msg: `Hello, ${req.user.username}`, secret: luckNumber });
 };
 
 module.exports = { login, dashboard };
