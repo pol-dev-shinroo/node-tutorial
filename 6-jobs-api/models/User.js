@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
 
 const UserSchema = new mongoose.Schema({
   name: {
@@ -22,6 +23,14 @@ const UserSchema = new mongoose.Schema({
     minlength: 6,
     // maxlength: 12,
   },
+});
+
+// mongoose middleware (in mongoose version5 you dont need to invoke next)
+UserSchema.pre("save", async function (next) {
+  // do the hashing here
+  const salt = await bcrypt.genSalt(10); // random bytes
+  this.password = await bcrypt.hash(this.password, salt);
+  // next();
 });
 
 module.exports = mongoose.model("User", UserSchema);
