@@ -1,11 +1,12 @@
 const jwt = require("jsonwebtoken");
 const customAPIError = require("../errors/custom-error");
+const { BadRequest, UnauthenticatedError } = require("../errors");
 
 const authenticationMiddleware = async (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith("")) {
-    throw new customAPIError("No token", 400);
+    throw new BadRequest("no headers with token provided");
   }
 
   const token = authHeader.split(" ")[1];
@@ -16,7 +17,7 @@ const authenticationMiddleware = async (req, res, next) => {
     req.user = { id, username };
     next();
   } catch (err) {
-    throw new customAPIError("No authorized to access this route", 401);
+    throw new UnauthenticatedError("not authenticated");
   }
 };
 

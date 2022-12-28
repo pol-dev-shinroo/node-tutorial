@@ -12,3 +12,8 @@ HTTP is stateless
 
 - server does not remember any previous request sent by the same client
 - hence client must provide same token for every request
+
+### http-status-code library
+
+https://www.npmjs.com/package/http-status-codes
+![image](https://user-images.githubusercontent.com/102004753/209755745-9e0bedc3-dcb5-40df-a071-ee97a9cbcf23.png)
