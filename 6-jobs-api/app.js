@@ -8,12 +8,13 @@ const notFoundMiddleware = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");
 
 app.use(express.json());
-// extra packages
+// connect DB
 
 // routes
-app.get("/", (req, res) => {
-  res.send("jobs api");
-});
+const authRouter = require("./routes/auth");
+const jobRouter = require("./routes/jobs");
+app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/jobs", jobRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
