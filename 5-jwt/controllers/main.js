@@ -4,11 +4,39 @@
 
 // setup authentication so only the request with JWT can access the dashboard
 
+const jwt = require("jsonwebtoken");
+const customAPIError = require("../errors/custom-error");
+
 const login = async (req, res) => {
-  res.send("Fake Login/Register/Signup Route");
+  const { username, password } = req.body;
+
+  // mongo schema error
+  // or
+  if (!username || !password) {
+    throw new customAPIError("please provide email and password", 400);
+  }
+
+  const id = new Date().getDate();
+
+  // never send password as jwt payload!!! => super bad practice
+  // try to keep payload small, better experience for user
+  const token = jwt.sign({ id, username }, process.env.JWT_SECRET, {
+    expiresIn: "30d",
+  });
+
+  res.status(200).json({ msg: "user created", token });
 };
 
 const dashboard = async (req, res) => {
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader || !authHeader.startsWith("")) {
+    throw new customAPIError("No token", 400);
+  }
+
+  const token = authHeader.split(" ")[1];
+  console.log(token);
+
   const luckNumber = Math.floor(Math.random() * 100);
   res.status(200).json({ msg: `Hello, John Doe`, secret: luckNumber });
 };
