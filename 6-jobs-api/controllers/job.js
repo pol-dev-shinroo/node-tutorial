@@ -4,7 +4,7 @@ const { BadRequest, NotFoundError } = require("../errors");
 
 const getAllJobs = async (req, res) => {
   const jobs = await Job.find({ createdBy: req.user.userId }).sort("createdAt");
-  res.status(StatusCodes.OK).json(jobs);
+  res.status(StatusCodes.OK).json({ jobs, count: jobs.length });
 };
 
 const getJob = async (req, res) => {
@@ -43,7 +43,16 @@ const updateJob = async (req, res) => {
   res.status(StatusCodes.OK).json(job);
 };
 const deleteJob = async (req, res) => {
-  res.send("delete job");
+  const {
+    user: { userId },
+    params: { id: jobId },
+  } = req;
+  const job = await Job.findByIdAndRemove({ _id: jobId, createdBy: userId });
+
+  if (!job) {
+    throw new NotFoundError(`No job with id ${id}`);
+  }
+  res.status(StatusCodes.OK).json(job);
 };
 
 module.exports = { getAllJobs, getJob, createJob, updateJob, deleteJob };
