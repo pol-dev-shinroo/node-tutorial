@@ -1,7 +1,7 @@
 const { CustomAPIError } = require("../errors");
 const { StatusCodes } = require("http-status-codes");
 const errorHandlerMiddleware = (err, req, res, next) => {
-  // console.log(err);
+  console.log(err);
 
   let customError = {
     // set default
@@ -28,6 +28,11 @@ const errorHandlerMiddleware = (err, req, res, next) => {
       err.keyValue
     )} field, please choose another value`;
   }
+
+  if (err.name === "CastError") {
+    customError.msg = `No item found with id : ${err.value._id}`;
+  }
+
   // anything other than custom error are essentially errors emnating from mongoose
   // return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ err });
   return res.status(customError.statusCode).json({ msg: customError.msg });
