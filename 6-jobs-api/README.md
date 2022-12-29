@@ -51,9 +51,13 @@ Email Validation Regex
 #### Security
 
 - helmet
+  => By setting various security-related HTTP headers, such as Content-Security-Policy, X-Frame-Options, and X-XSS-Protection., you can help protect your web application from common attacks such as cross-site scripting (XSS), clickjacking, and content injection.
 - cors
+  => if you dont have cors, you will only be able to access api from the same domain
 - xss-clean
+  => XSS-clean (cross-site scripting clean) is a security measure that is used to prevent cross-site scripting (XSS) attacks. XSS attacks involve injecting malicious JavaScript code into a web page, which can be executed by the browser of anyone who views the page.
 - express-rate-limit
+  => used to limit the number of requests that a client can make to an Express.js-based web application. It is designed to help protect your server from being overwhelmed by excessive requests,
 
 Swagger UI
 
