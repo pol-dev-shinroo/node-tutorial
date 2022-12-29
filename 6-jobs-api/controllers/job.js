@@ -8,7 +8,14 @@ const getAllJobs = async (req, res) => {
 };
 
 const getJob = async (req, res) => {
-  res.send("get job");
+  const {
+    user: { userId },
+    params: { id: jobId },
+  } = req;
+
+  const job = await Job.findById({ _id: jobId, createdBy: userId });
+
+  res.status(StatusCodes.OK).json(job);
 };
 const createJob = async (req, res) => {
   req.body.createdBy = req.user.userId;
