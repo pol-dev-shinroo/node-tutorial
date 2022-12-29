@@ -1,4 +1,4 @@
-const mongoose = requre("mongoose");
+const mongoose = require("mongoose");
 
 const JobsSchema = new mongoose.Schema(
   {
@@ -25,7 +25,7 @@ const JobsSchema = new mongoose.Schema(
       required: [true, "Please provide user"],
     },
   },
-  { timestamps: true }
+  { timestamps: true } // adds createdAt + updatedAt
 );
 
 module.exports = mongoose.model("Jobs", JobsSchema);
