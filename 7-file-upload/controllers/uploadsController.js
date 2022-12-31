@@ -13,7 +13,9 @@ const uploadProductImage = async (req, res) => {
 
   await productImage.mv(imagePath);
 
-  res.send("upload product");
+  return res
+    .status(StatusCodes.OK)
+    .json({ image: { src: `/uploads/${productImage.name}` } });
 };
 
 module.exports = {
