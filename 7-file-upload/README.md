@@ -50,3 +50,7 @@ app.use(fileUpload({ useTempFiles: true }));
 ![image](https://user-images.githubusercontent.com/102004753/210122753-70e2e9db-612d-4215-906e-7c375336ac30.png)
 
 ![image](https://user-images.githubusercontent.com/102004753/210122823-893e27ba-233a-4dc4-b2d2-d8c8cd703cec.png)
+
+# CDN
+
+cloudianry handles CDN automatically, rendering iamge to users based on the closest location!
